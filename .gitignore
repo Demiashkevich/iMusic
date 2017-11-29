@@ -1,0 +1,15 @@
+target
+.classpath
+.project
+.settings
+.metadata
+
+# IntelliJ IDEA
+*.iml
+*.ipr
+.idea
+**.log
+**.stackdump
+
+# Eclipse
+.factorypath
