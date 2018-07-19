@@ -10,6 +10,21 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>service</artifactId>
+    <artifactId>music-service</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>music</groupId>
+            <artifactId>music-repository</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>music</groupId>
+            <artifactId>music-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-jdk8</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
