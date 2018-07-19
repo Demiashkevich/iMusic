@@ -1,11 +1,9 @@
 package com.music.entity.resource;
 
 import com.music.entity.Key;
-import com.music.entity.core.Resource;
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +11,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "playlists")
@@ -48,10 +49,6 @@ public class Playlist extends Key<Long> {
 
   @ManyToMany(mappedBy = "playlists", cascade = CascadeType.ALL)
   private Set<Curator> curators = new HashSet<>();
-
-  //TODO
-  @ManyToMany(mappedBy = "playlists", cascade = CascadeType.ALL)
-  private Set<Resource> tracks = new HashSet<>();
 
   @ManyToMany(mappedBy = "playlists", cascade = CascadeType.ALL)
   private Set<Artist> artists = new HashSet<>();
@@ -96,12 +93,12 @@ public class Playlist extends Key<Long> {
     this.name = name;
   }
 
-  public PlaylistType getPlayListType() {
+  public PlaylistType getPlaylistType() {
     return playlistType;
   }
 
-  public void setPlayListType(PlaylistType playListType) {
-    this.playlistType = playListType;
+  public void setPlaylistType(PlaylistType playlistType) {
+    this.playlistType = playlistType;
   }
 
   public PlayParameter getPlayParameter() {
@@ -128,28 +125,22 @@ public class Playlist extends Key<Long> {
     this.curators = curators;
   }
 
-  public Set<Resource> getTracks() {
-    return tracks;
-  }
-
-  public void setTracks(Set<Resource> tracks) {
-    this.tracks = tracks;
-  }
-
-  public PlaylistType getPlaylistType() {
-    return playlistType;
-  }
-
-  public void setPlaylistType(PlaylistType playlistType) {
-    this.playlistType = playlistType;
-  }
-
   public Set<Artist> getArtists() {
     return artists;
   }
 
   public void setArtists(Set<Artist> artists) {
     this.artists = artists;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    return EqualsBuilder.reflectionEquals(this, o);
+  }
+
+  @Override
+  public int hashCode() {
+    return HashCodeBuilder.reflectionHashCode(this);
   }
 
 }

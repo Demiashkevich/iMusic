@@ -1,11 +1,9 @@
 package com.music.entity.resource;
 
 import com.music.entity.Key;
-import com.music.entity.core.Resource;
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +13,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "albums")
@@ -88,15 +89,6 @@ public class Album extends Key<Long> {
         inverseJoinColumns = @JoinColumn(name = "song_id", referencedColumnName = "id")
     )
     private Set<Song> songs = new HashSet<>();
-
-    //TODO Relation with table Resource
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-        name = "album_resource",
-        joinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn(name = "resource_id", referencedColumnName = "id")
-    )
-    private Set<Resource> tracks = new HashSet<>();
 
     public String getArtistName() {
         return artistName;
@@ -226,12 +218,14 @@ public class Album extends Key<Long> {
         this.songs = songs;
     }
 
-    public Set<Resource> getTracks() {
-        return tracks;
+    @Override
+    public boolean equals(Object o) {
+        return EqualsBuilder.reflectionEquals(this, o);
     }
 
-    public void setTracks(Set<Resource> tracks) {
-        this.tracks = tracks;
+    @Override
+    public int hashCode() {
+        return HashCodeBuilder.reflectionHashCode(this);
     }
 
 }
