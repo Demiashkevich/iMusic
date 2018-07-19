@@ -1,4 +1,4 @@
-package com.music.entity.core;
+package com.dzemiashkevich.music.model.core;
 
 public class Error {
 

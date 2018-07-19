@@ -1,4 +1,4 @@
-package com.music.entity.resource;
+package com.dzemiashkevich.music.model.resource;
 
 public class Recommendation {
 

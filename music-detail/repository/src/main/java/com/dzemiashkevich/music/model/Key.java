@@ -1,4 +1,4 @@
-package com.music.entity;
+package com.dzemiashkevich.music.model;
 
 import java.io.Serializable;
 import javax.persistence.Column;

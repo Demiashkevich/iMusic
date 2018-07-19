@@ -1,6 +1,6 @@
-package com.music.entity.resource;
+package com.dzemiashkevich.music.model.resource;
 
-import com.music.entity.core.Resource;
+import com.dzemiashkevich.music.model.core.Resource;
 
 import java.util.HashSet;
 import java.util.Set;

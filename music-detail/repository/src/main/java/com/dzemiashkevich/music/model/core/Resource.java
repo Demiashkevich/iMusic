@@ -1,7 +1,7 @@
-package com.music.entity.core;
+package com.dzemiashkevich.music.model.core;
 
-import com.music.entity.resource.Attribute;
-import com.music.entity.resource.Relationship;
+import com.dzemiashkevich.music.model.resource.Attribute;
+import com.dzemiashkevich.music.model.resource.Relationship;
 
 public class Resource {
 

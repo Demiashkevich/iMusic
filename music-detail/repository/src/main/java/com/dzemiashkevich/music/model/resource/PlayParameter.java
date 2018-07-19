@@ -1,6 +1,6 @@
-package com.music.entity.resource;
+package com.dzemiashkevich.music.model.resource;
 
-import com.music.entity.Key;
+import com.dzemiashkevich.music.model.Key;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
