@@ -1,7 +1,7 @@
 package com.dzemiashkevich.music.endpoint;
 
-import com.dzemiashkevich.music.SongService;
-import com.dzemiashkevich.music.dto.SongRestDto;
+import com.dzemiashkevich.music.ArtistService;
+import com.dzemiashkevich.music.dto.ArtistRestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,35 +14,35 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Set;
 
 @RestController
-public class SongController {
+public class ArtistController {
 
     @Autowired
-    private SongService songService;
+    private ArtistService artistService;
 
-    @GetMapping("/songs")
-    public ResponseEntity<Set<SongRestDto>> readSong() {
-        return songService.find()
+    @GetMapping("/artists")
+    public ResponseEntity<Set<ArtistRestDto>> readArtist() {
+        return artistService.find()
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.noContent().build());
     }
 
-    @GetMapping("/songs/{id}")
-    public ResponseEntity<SongRestDto> readSongById(@PathVariable Long id) {
-        return songService.find(id)
+    @GetMapping("/artists/{id}")
+    public ResponseEntity<ArtistRestDto> readArtistById(@PathVariable Long id) {
+        return artistService.find(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.badRequest().build());
     }
 
-    @PostMapping("/songs")
-    public ResponseEntity<SongRestDto> createSong(@RequestBody SongRestDto albumDto) {
-        return songService.save(albumDto)
+    @PostMapping("/artists")
+    public ResponseEntity<ArtistRestDto> createArtist(@RequestBody ArtistRestDto artistDto) {
+        return artistService.save(artistDto)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.noContent().build());
     }
 
-    @PutMapping("/songs")
-    public ResponseEntity<SongRestDto> updateSong(@RequestBody SongRestDto albumDto) {
-        return songService.update(albumDto)
+    @PutMapping("/artists")
+    public ResponseEntity<ArtistRestDto> updateArtist(@RequestBody ArtistRestDto artistDto) {
+        return artistService.update(artistDto)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.noContent().build());
     }

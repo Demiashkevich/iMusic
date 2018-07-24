@@ -1,5 +1,6 @@
 package com.dzemiashkevich.music;
 
+import com.dzemiashkevich.music.dto.KeyRestDto;
 import com.dzemiashkevich.music.mapping.Mapper;
 import com.dzemiashkevich.music.model.Key;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class CrudService<D, M extends Key, K extends Number> {
+public class CrudService<D extends KeyRestDto, M extends Key, K extends Number> {
 
     @Autowired
     private JpaRepository<M, K> repository;

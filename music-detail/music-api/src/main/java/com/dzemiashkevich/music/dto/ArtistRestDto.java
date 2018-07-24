@@ -3,26 +3,26 @@ package com.dzemiashkevich.music.dto;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
-public class EditorialNoteRestDto extends KeyRestDto<Long> {
+public class ArtistRestDto extends KeyRestDto<Long> {
 
-    private String standard;
+    private String name;
 
-    private String brief;
+    private String url;
 
-    public String getStandard() {
-        return standard;
+    public String getName() {
+        return name;
     }
 
-    public void setStandard(String standard) {
-        this.standard = standard;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getBrief() {
-        return brief;
+    public String getUrl() {
+        return url;
     }
 
-    public void setBrief(String brief) {
-        this.brief = brief;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override

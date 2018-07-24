@@ -5,7 +5,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import java.time.LocalDate;
 
-public class AlbumRestDto {
+public class AlbumRestDto extends KeyRestDto<Long> {
 
     private String artistName;
 

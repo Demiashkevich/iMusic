@@ -1,7 +1,6 @@
 package com.dzemiashkevich.music.runtime;
 
 import com.dzemiashkevich.music.AlbumService;
-import com.dzemiashkevich.music.mapping.AlbumMapper;
 import com.dzemiashkevich.music.model.resource.Album;
 import com.dzemiashkevich.music.repository.AlbumRepository;
 import org.springframework.boot.SpringApplication;
