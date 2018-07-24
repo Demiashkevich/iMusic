@@ -17,6 +17,8 @@
         <module>music-repository</module>
         <module>music-service</module>
         <module>music-api</module>
+        <module>music-runtime</module>
+        <module>music-endpoint</module>
     </modules>
 
 </project>

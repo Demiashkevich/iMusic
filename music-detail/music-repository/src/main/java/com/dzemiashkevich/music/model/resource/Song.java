@@ -7,6 +7,8 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -82,7 +84,12 @@ public class Song extends Key<Long> {
     @ManyToMany(mappedBy = "songs", cascade = CascadeType.ALL)
     private Set<Artist> artists = new HashSet<>();
 
-    @ManyToMany(mappedBy = "songs", cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "song_genre",
+            joinColumns = @JoinColumn(name = "song_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id", referencedColumnName = "id")
+    )
     private Set<Genre> genres = new HashSet<>();
 
     public String getArtistName() {

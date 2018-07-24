@@ -2,9 +2,13 @@ package com.dzemiashkevich.music.mapping;
 
 import com.dzemiashkevich.music.model.Key;
 
-public interface Mapper<Dto, Model extends Key> {
+import java.util.List;
 
-    Dto modelToDto(Model model);
-    Model dtoToModel(Dto dto);
+public interface Mapper<D, M extends Key> {
+
+    D modelToDto(M model);
+    List<D> modelToDto(List<M> model);
+    M dtoToModel(D dto);
+    List<M> dtoToModel(List<D> dto);
 
 }

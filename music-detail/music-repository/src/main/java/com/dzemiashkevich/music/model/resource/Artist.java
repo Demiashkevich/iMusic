@@ -35,7 +35,7 @@ public class Artist extends Key<Long> {
 
   //Relations Many-To-Many
 
-  @ManyToMany(cascade = CascadeType.ALL, mappedBy = "albums")
+  @ManyToMany(cascade = CascadeType.ALL, mappedBy = "artists")
   private Set<Album> albums = new HashSet<>();
 
   @ManyToMany(cascade = CascadeType.ALL)
@@ -54,7 +54,12 @@ public class Artist extends Key<Long> {
   )
   private Set<Playlist> playlists = new HashSet<>();
 
-  @ManyToMany(cascade = CascadeType.ALL, mappedBy = "albums")
+  @ManyToMany(cascade = CascadeType.ALL)
+  @JoinTable(
+          name = "artist_song",
+          joinColumns = @JoinColumn(name = "artist_id", referencedColumnName = "id"),
+          inverseJoinColumns = @JoinColumn(name = "song_id", referencedColumnName = "id")
+  )
   private Set<Song> songs = new HashSet<>();
 
   public Set<Genre> getGenres() {

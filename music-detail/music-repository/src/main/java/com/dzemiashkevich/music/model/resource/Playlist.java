@@ -42,7 +42,7 @@ public class Playlist extends Key<Long> {
   @ManyToOne
   private PlaylistType playlistType;
 
-  @OneToOne(mappedBy = "playlist")
+  @ManyToOne
   private PlayParameter playParameter;
 
   //Relation Many-To-Many

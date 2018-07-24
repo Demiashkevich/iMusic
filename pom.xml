@@ -14,6 +14,7 @@
     </modules>
 
     <properties>
+        <java.version>1.8</java.version>
         <org.springframework.boot.version>2.0.1.RELEASE</org.springframework.boot.version>
         <commons-lang.version>2.2</commons-lang.version>
         <com.h2database.version>1.4.197</com.h2database.version>
@@ -32,6 +33,16 @@
             <dependency>
                 <groupId>music</groupId>
                 <artifactId>music-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>music</groupId>
+                <artifactId>music-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>music</groupId>
+                <artifactId>music-endpoint</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
