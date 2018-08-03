@@ -21,30 +21,22 @@ public class EditorialNoteController {
 
     @GetMapping("/editorialNotes")
     public ResponseEntity<Set<EditorialNoteRestDto>> readEditorialNote() {
-        return editorialNoteService.find()
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.noContent().build());
+        return ResponseEntity.ok(editorialNoteService.find());
     }
 
     @GetMapping("/editorialNotes/{id}")
     public ResponseEntity<EditorialNoteRestDto> readEditorialNoteById(@PathVariable Long id) {
-        return editorialNoteService.find(id)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.badRequest().build());
+        return ResponseEntity.ok(editorialNoteService.find(id));
     }
 
     @PostMapping("/editorialNotes")
     public ResponseEntity<EditorialNoteRestDto> createEditorialNote(@RequestBody EditorialNoteRestDto editorialNoteDto) {
-        return editorialNoteService.save(editorialNoteDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.noContent().build());
+        return ResponseEntity.ok(editorialNoteService.save(editorialNoteDto));
     }
 
     @PutMapping("/editorialNotes")
     public ResponseEntity<EditorialNoteRestDto> updateEditorialNote(@RequestBody EditorialNoteRestDto editorialNoteDto) {
-        return editorialNoteService.update(editorialNoteDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.noContent().build());
+        return ResponseEntity.ok(editorialNoteService.update(editorialNoteDto));
     }
 
 }

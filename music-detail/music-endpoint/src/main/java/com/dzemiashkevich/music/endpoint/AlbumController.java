@@ -21,30 +21,22 @@ public class AlbumController {
 
     @GetMapping("/albums")
     public ResponseEntity<Set<AlbumRestDto>> readAlbum() {
-        return albumService.find()
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.noContent().build());
+        return ResponseEntity.ok(albumService.find());
     }
 
     @GetMapping("/albums/{id}")
     public ResponseEntity<AlbumRestDto> readAlbumById(@PathVariable Long id) {
-        return albumService.find(id)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.badRequest().build());
+        return ResponseEntity.ok(albumService.find(id));
     }
 
     @PostMapping("/albums")
     public ResponseEntity<AlbumRestDto> createAlbum(@RequestBody AlbumRestDto albumDto) {
-        return albumService.save(albumDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.noContent().build());
+        return ResponseEntity.ok(albumService.save(albumDto));
     }
 
     @PutMapping("/albums")
     public ResponseEntity<AlbumRestDto> updateAlbum(@RequestBody AlbumRestDto albumDto) {
-        return albumService.update(albumDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.noContent().build());
+        return ResponseEntity.ok(albumService.update(albumDto));
     }
 
 }

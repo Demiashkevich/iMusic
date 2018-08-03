@@ -21,30 +21,22 @@ public class ArtistController {
 
     @GetMapping("/artists")
     public ResponseEntity<Set<ArtistRestDto>> readArtist() {
-        return artistService.find()
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.noContent().build());
+        return ResponseEntity.ok(artistService.find());
     }
 
     @GetMapping("/artists/{id}")
     public ResponseEntity<ArtistRestDto> readArtistById(@PathVariable Long id) {
-        return artistService.find(id)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.badRequest().build());
+        return ResponseEntity.ok(artistService.find(id));
     }
 
     @PostMapping("/artists")
     public ResponseEntity<ArtistRestDto> createArtist(@RequestBody ArtistRestDto artistDto) {
-        return artistService.save(artistDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.noContent().build());
+        return ResponseEntity.ok(artistService.save(artistDto));
     }
 
     @PutMapping("/artists")
     public ResponseEntity<ArtistRestDto> updateArtist(@RequestBody ArtistRestDto artistDto) {
-        return artistService.update(artistDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.noContent().build());
+        return ResponseEntity.ok(artistService.update(artistDto));
     }
 
 }

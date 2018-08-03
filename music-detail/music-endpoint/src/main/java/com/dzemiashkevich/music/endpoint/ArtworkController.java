@@ -21,30 +21,22 @@ public class ArtworkController {
 
     @GetMapping("/artworks")
     public ResponseEntity<Set<ArtworkRestDto>> readArtwork() {
-        return artworkService.find()
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.noContent().build());
+        return ResponseEntity.ok(artworkService.find());
     }
 
     @GetMapping("/artworks/{id}")
     public ResponseEntity<ArtworkRestDto> readArtworkById(@PathVariable Long id) {
-        return artworkService.find(id)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.badRequest().build());
+        return ResponseEntity.ok(artworkService.find(id));
     }
 
     @PostMapping("/artworks")
     public ResponseEntity<ArtworkRestDto> createArtwork(@RequestBody ArtworkRestDto artworkDto) {
-        return artworkService.save(artworkDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.noContent().build());
+        return ResponseEntity.ok(artworkService.save(artworkDto));
     }
 
     @PutMapping("/artworks")
     public ResponseEntity<ArtworkRestDto> updateArtwork(@RequestBody ArtworkRestDto artworkDto) {
-        return artworkService.update(artworkDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.noContent().build());
+        return ResponseEntity.ok(artworkService.update(artworkDto));
     }
 
 }

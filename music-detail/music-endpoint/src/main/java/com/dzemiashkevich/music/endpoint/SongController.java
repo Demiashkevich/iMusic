@@ -21,30 +21,22 @@ public class SongController {
 
     @GetMapping("/songs")
     public ResponseEntity<Set<SongRestDto>> readSong() {
-        return songService.find()
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.noContent().build());
+        return ResponseEntity.ok(songService.find());
     }
 
     @GetMapping("/songs/{id}")
     public ResponseEntity<SongRestDto> readSongById(@PathVariable Long id) {
-        return songService.find(id)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.badRequest().build());
+        return ResponseEntity.ok(songService.find(id));
     }
 
     @PostMapping("/songs")
     public ResponseEntity<SongRestDto> createSong(@RequestBody SongRestDto albumDto) {
-        return songService.save(albumDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.noContent().build());
+        return ResponseEntity.ok(songService.save(albumDto));
     }
 
     @PutMapping("/songs")
     public ResponseEntity<SongRestDto> updateSong(@RequestBody SongRestDto albumDto) {
-        return songService.update(albumDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.noContent().build());
+        return ResponseEntity.ok(songService.update(albumDto));
     }
 
 }

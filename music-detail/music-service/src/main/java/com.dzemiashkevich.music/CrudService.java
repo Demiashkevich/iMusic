@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -21,35 +22,35 @@ public class CrudService<D extends KeyRestDto, M extends Key, K extends Number> 
     @Autowired
     private Mapper<D, M> mapper;
 
-    public Optional<Set<D>> find() {
+    public Set<D> find() {
         List<M> multipleModel = repository.findAll();
         List<D> multipleDto = mapper.modelToDto(multipleModel);
         if (!CollectionUtils.isEmpty(multipleDto)) {
-            return Optional.of(new HashSet<>(multipleDto));
+            return new HashSet<>(multipleDto);
         }
-        return Optional.empty();
+        return Collections.emptySet();
     }
 
-    public Optional<D> find(K id) {
+    public D find(K id) {
         Optional<M> model = repository.findById(id);
         if (model.isPresent()) {
             D dto = mapper.modelToDto(model.get());
-            return Optional.of(dto);
+            return dto;
         }
-        return Optional.empty();
+        return null;
     }
 
-    public Optional<D> save(D dto) {
+    public D save(D dto) {
         M model = mapper.dtoToModel(dto);
         model = repository.save(model);
         if (ObjectUtils.isEmpty(model)) {
-            return Optional.empty();
+            return null;
         }
         dto = mapper.modelToDto(model);
-        return Optional.of(dto);
+        return dto;
     }
 
-    public Optional<D> update(D dto) {
+    public D update(D dto) {
         return save(dto);
     }
 
