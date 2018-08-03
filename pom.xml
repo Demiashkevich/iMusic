@@ -11,6 +11,7 @@
 
     <modules>
         <module>music-detail</module>
+        <module>common</module>
     </modules>
 
     <properties>
@@ -43,6 +44,16 @@
             <dependency>
                 <groupId>music</groupId>
                 <artifactId>music-endpoint</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>music</groupId>
+                <artifactId>common-exception</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>music</groupId>
+                <artifactId>exception-handler</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
