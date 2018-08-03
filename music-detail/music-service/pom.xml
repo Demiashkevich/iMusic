@@ -25,6 +25,10 @@
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-jdk8</artifactId>
         </dependency>
+        <dependency>
+            <groupId>music</groupId>
+            <artifactId>exception-handler</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

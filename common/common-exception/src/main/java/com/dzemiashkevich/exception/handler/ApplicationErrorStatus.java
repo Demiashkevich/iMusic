@@ -4,7 +4,8 @@ import org.springframework.http.HttpStatus;
 
 public enum ApplicationErrorStatus {
 
-    ENTITY_NOT_FOUND(HttpStatus.NOT_FOUND, "The %s with id %s not found in database");
+    ENTITY_NOT_FOUND(HttpStatus.NOT_FOUND, "The %s with id %s not found in database"),
+    ENTITY_NOT_SAVED(HttpStatus.INTERNAL_SERVER_ERROR, "The %s with id %s not saved in database");
 
     private HttpStatus statusCode;
     private String errorMessage;
