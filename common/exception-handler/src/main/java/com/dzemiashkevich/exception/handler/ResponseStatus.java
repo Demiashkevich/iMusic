@@ -1,5 +1,8 @@
 package com.dzemiashkevich.exception.handler;
 
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.ObjectUtils;
+
 public class ResponseStatus {
 
     private String errorMessage;
@@ -7,7 +10,7 @@ public class ResponseStatus {
 
     public ResponseStatus(Exception exception) {
         this.errorMessage = exception.getMessage();
-        this.causeMessage = exception.getCause().getMessage();
+        this.causeMessage = extractCausedMessage(exception);
     }
 
     public String getErrorMessage() {
@@ -24,6 +27,14 @@ public class ResponseStatus {
 
     public void setCauseMessage(String causeMessage) {
         this.causeMessage = causeMessage;
+    }
+
+    private String extractCausedMessage(Exception exception) {
+        Throwable cause = exception.getCause();
+        if (!ObjectUtils.isEmpty(cause)) {
+            return cause.getMessage() == null ? StringUtils.EMPTY : cause.getMessage();
+        }
+        return StringUtils.EMPTY;
     }
 
 }
